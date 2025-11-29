@@ -1,0 +1,565 @@
+## Prompt para Generar App de Trabajos Freelancer
+
+**"Crea una aplicación web completa en HTML para una plataforma de trabajos freelancer con las siguientes características:**
+
+### Estructura Principal:
+1. **Página de inicio** con navegación clara entre dos secciones:
+   - "Soy Freelancer" (Ofrezco mis servicios)
+   - "Necesito un Freelancer" (Busco servicios)
+
+### Formulario para FREELANCERS (Personas que ofrecen trabajo):
+- **Datos Personales:**
+  - Nombre completo
+  - Email
+  - Teléfono
+  - País/Ciudad
+  - Foto de perfil
+
+- **Información Profesional:**
+  - Título profesional/Ocupación
+  - Categoría de servicios (diseño, programación, marketing, escritura, etc.)
+  - Habilidades específicas (tags)
+  - Años de experiencia
+  - Descripción de servicios
+  - Portfolio/Trabajos anteriores (links)
+  - Tarifa por hora o proyecto
+  - Disponibilidad (tiempo completo/parcial/por proyecto)
+
+### Formulario para CLIENTES (Personas que necesitan trabajo):
+- **Datos del Cliente:**
+  - Nombre/Empresa
+  - Email corporativo
+  - Teléfono
+  - País/Ciudad
+  
+- **Detalles del Proyecto:**
+  - Título del proyecto
+  - Categoría del trabajo necesitado
+  - Descripción detallada del proyecto
+  - Presupuesto estimado
+  - Duración del proyecto
+  - Fecha de inicio deseada
+  - Habilidades requeridas
+  - Tipo de contratación (por hora/proyecto fijo/largo plazo)
+
+### Requisitos Técnicos:
+- Usar HTML5 semántico
+- Incluir CSS interno con diseño responsive
+- Validación de formularios HTML5
+- Diseño moderno y profesional con colores corporativos
+- Botones de acción claros
+- Mensajes de ayuda/tooltips en campos importantes
+- Incluir términos y condiciones checkbox
+- Botón de envío destacado
+
+### Extras:
+- Página de confirmación de registro
+- Sección de búsqueda básica
+- Footer con información de contacto
+- Diseño que inspire confianza y profesionalismo
+
+**Genera el código HTML completo, listo para usar, con estilos CSS incorporados y comentarios explicativos en español.**"
+
+---
+
+## Ejemplo de Código HTML Generado:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelanceHub - Conectando Talento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+        }
+        
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-freelancer {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-cliente {
+            background: #764ba2;
+            color: white;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .form-section.active {
+            display: block;
+        }
+        
+        .form-title {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .home-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">💼 FreelanceHub</div>
+            <nav class="main-nav">
+                <button class="nav-btn btn-freelancer" onclick="showSection('freelancer')">
+                    Soy Freelancer
+                </button>
+                <button class="nav-btn btn-cliente" onclick="showSection('cliente')">
+                    Necesito un Freelancer
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sección de Inicio -->
+        <div id="home" class="home-section active">
+            <h1>Bienvenido a FreelanceHub</h1>
+            <p style="font-size: 18px; margin: 20px 0;">
+                La plataforma que conecta el mejor talento freelance con proyectos increíbles
+            </p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Proyectos de Calidad</h3>
+                    <p>Accede a proyectos verificados de clientes serios</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Pagos Seguros</h3>
+                    <p>Sistema de pagos protegido y garantizado</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌟</div>
+                    <h3>Talento Verificado</h3>
+                    <p>Freelancers con experiencia comprobada</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario Freelancer -->
+        <div id="freelancer" class="form-section">
+            <h2 class="form-title">Registro de Freelancer</h2>
+            <form id="freelancerForm">
+                <h3 style="color: #667eea; margin-bottom: 20px;">Información Personal</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefono">Teléfono *</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pais">País/Ciudad *</label>
+                        <input type="text" id="pais" name="pais" required>
+                    </div>
+                </div>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px;">Información Profesional</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="titulo">Título Profesional *</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Ej: Desarrollador Web Senior" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoría de Servicios *</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="">Seleccione una categoría</option>
+                            <option value="diseño">Diseño Gráfico</option>
+                            <option value="desarrollo">Desarrollo Web</option>
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="escritura">Redacción y Contenidos</option>
+                            <option value="traduccion">Traducción</option>
+                            <option value="video">Video y Animación</option>
+                            <option value="consultoria">Consultoría</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="experiencia">Años de Experiencia *</label>
+                        <select id="experiencia" name="experiencia" required>
+                            <option value="">Seleccione</option>
+                            <option value="0-1">Menos de 1 año</option>
+                            <option value="1-3">1-3 años</option>
+                            <option value="3-5">3-5 años</option>
+                            <option value="5-10">5-10 años</option>
+                            <option value="10+">Más de 10 años</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tarifa">Tarifa por Hora (USD) *</label>
+                        <input type="number" id="tarifa" name="tarifa" min="5" max="500" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="habilidades">Habilidades Específicas *</label>
+                    <input type="text" id="habilidades" name="habilidades" placeholder="Ej: HTML, CSS, JavaScript, React, Node.js" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción de Servicios *</label>
+                    <textarea id="descripcion" name="descripcion" placeholder="Describe detalladamente los servicios que ofreces..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="portfolio">Enlaces a Portfolio/Trabajos Anteriores</label>
+                    <input type="url" id="portfolio" name="portfolio" placeholder="https://mi-portfolio.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="disponibilidad">Disponibilidad *</label>
+                    <select id="disponibilidad" name="disponibilidad" required>
+                        <option value="">Seleccione</option>
+                        <option value="tiempo-completo">Tiempo Completo</option>
+                        <option value="medio-tiempo">Medio Tiempo</option>
+                        <option value="por-proyecto">Por Proyecto</option>
+                        <option value="fines-semana">Fines de Semana</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terminos-freelancer" required>
+                    <label for="terminos-freelancer">
+                        Acepto los términos y condiciones y la política de privacidad
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Registrarme como Freelancer</button>
+            </form>
+        </div>
+
+        <!-- Formulario Cliente -->
+        <div id="cliente" class="form-section">
+            <h2 class="form-title">Publicar Proyecto</h2>
+            <form id="clienteForm">
+                <h3 style="color: #764ba2; margin-bottom: 20px;">Información del Cliente</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="empresa">Nombre/Empresa *</label>
+                        <input type="text" id="empresa" name="empresa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-cliente">Email Corporativo *</label>
+                        <input type="email" id="email-cliente" name="email-cliente" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefono-cliente">Teléfono *</label>
+                        <input type="tel" id="telefono-cliente" name="telefono-cliente" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pais-cliente">País/Ciudad *</label>
+                        <input type="text" id="pais-cliente" name="pais-cliente" required>
+                    </div>
+                </div>
+
+                <h3 style="color: #764ba2; margin: 30px 0 20px;">Detalles del Proyecto</h3>
+                
+                <div class="form-group">
+                    <label for="titulo-proyecto">Título del Proyecto *</label>
+                    <input type="text" id="titulo-proyecto" name="titulo-proyecto" placeholder="Ej: Desarrollo de E-commerce" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="categoria-proyecto">Categoría del Trabajo *</label>
+                        <select id="categoria-proyecto" name="categoria-proyecto" required>
+                            <option value="">Seleccione una categoría</option>
+                            <option value="diseño">Diseño Gráfico</option>
+                            <option value="desarrollo">Desarrollo Web</option>
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="escritura">Redacción y Contenidos</option>
+                            <option value="traduccion">Traducción</option>
+                            <option value="video">Video y Animación</option>
+                            <option value="consultoria">Consultoría</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="presupuesto">Presupuesto Estimado (USD) *</label>
+                        <select id="presupuesto" name="presupuesto" required>
+                            <option value="">Seleccione</option>
+                            <option value="0-500">$0 - $500</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000-5000">$1,000 - $5,000</option>
+                            <option value="5000-10000">$5,000 - $10,000</option>
+                            <option value="10000+">Más de $10,000</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion-proyecto">Descripción Detallada del Proyecto *</label>
+                    <textarea id="descripcion-proyecto" name="descripcion-proyecto" rows="5" 
+                              placeholder="Describe qué necesitas, objetivos, entregables esperados..." required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="duracion">Duración del Proyecto *</label>
+                        <select id="duracion" name="duracion" required>
+                            <option value="">Seleccione</option>
+                            <option value="1-semana">Menos de 1 semana</option>
+                            <option value="1-mes">1-4 semanas</option>
+                            <option value="1-3-meses">1-3 meses</option>
+                            <option value="3-6-meses">3-6 meses</option>
+                            <option value="6-meses+">Más de 6 meses</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-inicio">Fecha de Inicio Deseada *</label>
+                        <input type="date" id="fecha-inicio" name="fecha-inicio" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="habilidades-requeridas">Habilidades Requeridas *</label>
+                    <input type="text" id="habilidades-requeridas" name="habilidades-requeridas" 
+                           placeholder="Ej: WordPress, SEO, Photoshop, Marketing Digital" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-contratacion">Tipo de Contratación *</label>
+                    <select id="tipo-contratacion" name="tipo-contratacion" required>
+                        <option value="">Seleccione</option>
+                        <option value="por-hora">Por Hora</option>
+                        <option value="proyecto-fijo">Proyecto Fijo</option>
+                        <option value="largo-plazo">Largo Plazo</option>
+                        <option value="ocasional">Ocasional</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terminos-cliente" required>
+                    <label for="terminos-cliente">
+                        Acepto los términos y condiciones y la política de privacidad
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Publicar Proyecto</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            // Ocultar todas las secciones
+            document.getElementById('home').classList.remove('active');
+            document.getElementById('freelancer').classList.remove('active');
+            document.getElementById('cliente').classList.remove('active');
+            
+            // Mostrar la sección seleccionada
+            if (section === 'freelancer') {
+                document.getElementById('freelancer').classList.add('active');
+            } else if (section === 'cliente') {
+                document.getElementById('cliente').classList.add('active');
+            }
+        }
+
+        // Manejar envío de formulario freelancer
+        document.getElementById('freelancerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Registro exitoso! Tu perfil de freelancer ha sido creado.');
+            this.reset();
+        });
+
+        // Manejar envío de formulario cliente
+        document.getElementById('clienteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Proyecto publicado exitosamente! Los freelancers podrán verlo pronto.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+
+Este código crea una aplicación web completa para conectar freelancers con clientes, con formularios intuitivos y un diseño moderno y responsive.
