@@ -554,20 +554,19 @@
             btn.classList.add('opacity-75', 'cursor-not-allowed');
             
             const templateParams = {
-                to_name: "Admin VerboConnect",
-                to_email: "f.guzmancarcamo@gmail.com",
                 from_name: document.getElementById('fname').value,
-                message: `Registro Freelancer:\nEmail: ${document.getElementById('femail').value}\nHabilidades: ${document.getElementById('fskills').value}\nUbicación: ${document.getElementById('flocation').value}`,
-                reply_to: document.getElementById('femail').value
+                from_email: document.getElementById('femail').value,
+                message: `Registro Freelancer:\nEmail: ${document.getElementById('femail').value}\nHabilidades: ${document.getElementById('fskills').value}\nUbicación: ${document.getElementById('flocation').value}`
             };
 
             emailjs.send('service_hf7ieoa', 'template_s63x69q', templateParams)
-                .then(() => {
-                    showNotification("¡Bienvenido!", "Registro enviado correctamente.");
-                    document.getElementById('freelancerForm').reset();
-                }, (err) => {
-                    console.error(err);
-                    showNotification("Error", "Hubo un problema al enviar el registro.");
+                .then(function(response) {
+                   console.log('ÉXITO!', response.status, response.text);
+                   showNotification("¡Bienvenido!", "Registro enviado correctamente.");
+                   document.getElementById('freelancerForm').reset();
+                }, function(error) {
+                   console.log('FALLÓ...', error);
+                   showNotification("Error", "Hubo un problema al enviar el registro.");
                 })
                 .finally(() => {
                     btn.innerText = originalText;
@@ -592,16 +591,17 @@
             };
 
             const templateParams = {
-                to_name: "Admin VerboConnect",
-                to_email: "f.guzmancarcamo@gmail.com",
                 from_name: document.getElementById('cname').value,
-                message: `Nuevo Proyecto:\nTítulo: ${newProject.title}\nPresupuesto: ${newProject.budget}\nDescripción: ${newProject.desc}`,
-                reply_to: document.getElementById('cemail').value
+                from_email: document.getElementById('cemail').value,
+                message: `Nuevo Proyecto:\nTítulo: ${newProject.title}\nPresupuesto: ${newProject.budget}\nDescripción: ${newProject.desc}`
             };
 
             emailjs.send('service_hf7ieoa', 'template_s63x69q', templateParams)
-                .then(() => console.log("Notificación enviada"))
-                .catch((err) => console.error("Error notificación", err));
+                .then(function(response) {
+                   console.log('ÉXITO!', response.status, response.text);
+                }, function(error) {
+                   console.log('FALLÓ...', error);
+                });
 
             setTimeout(() => {
                 const projects = JSON.parse(localStorage.getItem('verboConnectProjects') || '[]');
@@ -627,21 +627,20 @@
             btn.classList.add('opacity-75', 'cursor-not-allowed');
 
             const templateParams = {
-                to_name: "Admin VerboConnect",
-                to_email: "f.guzmancarcamo@gmail.com",
                 from_name: document.getElementById('contactName').value,
-                message: `Mensaje Directo:\n${document.getElementById('contactMessage').value}`,
-                reply_to: document.getElementById('contactEmail').value
+                from_email: document.getElementById('contactEmail').value,
+                message: document.getElementById('contactMessage').value
             };
 
             emailjs.send('service_hf7ieoa', 'template_s63x69q', templateParams)
-                .then(() => {
-                    showNotification("¡Enviado!", "Mensaje recibido. Te contactaremos pronto.");
-                    document.getElementById('contactForm').reset();
-                    setTimeout(() => showTab('home'), 2000);
-                }, (err) => {
-                    console.error(err);
-                    showNotification("Error", "No se pudo enviar el mensaje.");
+                .then(function(response) {
+                   console.log('ÉXITO!', response.status, response.text);
+                   showNotification("¡Enviado!", "Mensaje recibido. Te contactaremos pronto.");
+                   document.getElementById('contactForm').reset();
+                   setTimeout(() => showTab('home'), 2000);
+                }, function(error) {
+                   console.log('FALLÓ...', error);
+                   showNotification("Error", "No se pudo enviar el mensaje.");
                 })
                 .finally(() => {
                     btn.innerText = originalText;
