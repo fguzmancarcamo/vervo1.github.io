@@ -553,10 +553,11 @@
             btn.innerText = "ENVIANDO...";
             btn.classList.add('opacity-75', 'cursor-not-allowed');
             
+            // DATOS REALES DEL FORMULARIO (Freelancer)
             const templateParams = {
-                from_name: document.getElementById('fname').value,
-                from_email: document.getElementById('femail').value,
-                message: `Registro Freelancer:\nEmail: ${document.getElementById('femail').value}\nHabilidades: ${document.getElementById('fskills').value}\nUbicación: ${document.getElementById('flocation').value}`
+                from_name: document.getElementById('fname').value,   // Nombre Real
+                from_email: document.getElementById('femail').value, // Email Real
+                message: `REGISTRO FREELANCER:\n\nHabilidades: ${document.getElementById('fskills').value}\nUbicación: ${document.getElementById('flocation').value}\nExperiencia: ${document.getElementById('fexperience').value} años\nPortafolio: ${document.getElementById('fportfolio').value}`
             };
 
             emailjs.send('service_hf7ieoa', 'template_s63x69q', templateParams)
@@ -590,10 +591,11 @@
                 time: "Hace 1 min"
             };
 
+            // DATOS REALES DEL FORMULARIO (Cliente)
             const templateParams = {
-                from_name: document.getElementById('cname').value,
-                from_email: document.getElementById('cemail').value,
-                message: `Nuevo Proyecto:\nTítulo: ${newProject.title}\nPresupuesto: ${newProject.budget}\nDescripción: ${newProject.desc}`
+                from_name: document.getElementById('cname').value,   // Nombre Real
+                from_email: document.getElementById('cemail').value, // Email Real
+                message: `NUEVO PROYECTO:\n\nTítulo: ${newProject.title}\nPresupuesto: ${newProject.budget}\nCategoría: ${newProject.category}\nUbicación: ${document.getElementById('clocation').value}\nDescripción: ${newProject.desc}`
             };
 
             emailjs.send('service_hf7ieoa', 'template_s63x69q', templateParams)
@@ -626,10 +628,11 @@
             btn.innerText = "ENVIANDO...";
             btn.classList.add('opacity-75', 'cursor-not-allowed');
 
+            // DATOS REALES DEL FORMULARIO (Contacto)
             const templateParams = {
-                from_name: document.getElementById('contactName').value,
-                from_email: document.getElementById('contactEmail').value,
-                message: document.getElementById('contactMessage').value
+                from_name: document.getElementById('contactName').value,   // Nombre Real
+                from_email: document.getElementById('contactEmail').value, // Email Real
+                message: document.getElementById('contactMessage').value   // Mensaje Real
             };
 
             emailjs.send('service_hf7ieoa', 'template_s63x69q', templateParams)
